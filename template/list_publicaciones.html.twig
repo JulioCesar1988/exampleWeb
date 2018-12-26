@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'head.html.twig' %}
+<body>
+{% include 'navBar.html.twig' %}
+<div class="container">
+  <h2>Mensajes</h2>
+  <p>acá vamos a ver las publicaciones de los usuarios que sigo .</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Mensaje</th>
+        <th>Fecha Publicacion</th>
+          <th>Autor</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+    {%for publicacion in publicaciones %}
+      <tr>
+        <td>{{publicacion.mensaje}}</td>
+        <td>{{publicacion.fecha_publicacion}}</td>
+        <td>{{publicacion.usuario_id}}</td>
+
+      </tr>
+   {%endfor%}
+    </tbody>
+  </table>
+</body>
+</html>

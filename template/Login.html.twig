@@ -1,14 +1,25 @@
-
-
-<?php
-include '../template/Navbar.php';
-
-
-<form action="welcome.php" method="post">
-Name: <input type="text" name="name"><br>
-E-mail: <input type="text" name="email"><br>
-<input type="submit">
-</form>
-
-
-?>
+<!DOCTYPE html>
+<html lang="en">
+{% include 'head.html.twig' %}
+<body>
+{% include 'navBar.html.twig' %}
+<div class="container">
+  <h3>Login</h3>
+  <p> Verificar el usuario en el sistemas por medio del login . </p>
+  <form action="http://localhost/benitez/index.php?action=verificar_usuario" method="post">
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" class="form-control" id="email" name ="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" name="pwd">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+</body>
+</html>

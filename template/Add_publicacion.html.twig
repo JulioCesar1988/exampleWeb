@@ -1,9 +1,21 @@
-
-<center>
-<p> Cargar Mensaje</p>
- <form action="/controlador/publicacionControlador.php/add_mensaje" method="post">
-<label for="textAreaField"></label>
-<textarea name="mensaje" id="mensaje" rows="4"  cols="50"></textarea>
-<input type="checkbox" name="test" value="value1">es publicio ?
-  <p><input type="submit"/></p>
- </form>
+<!DOCTYPE html>
+<html lang="en">
+{% include 'head.html.twig' %}
+<body>
+{% include 'navBar.html.twig' %}
+<div class="container">
+  <h3>Cargar un mensaje</h3>
+  <p> En que estas pensando ?</p>
+  <form action="./index.php?action=insert_mensaje" method="post">
+  <div class="form-group">
+    <label for="publicacion">Agregar Mensaje:</label>
+    <textarea class="form-control" rows="20" maxlength="150" id="mensaje" name="mensaje"> </textarea>
+  </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="publico" value="1"> Publico ? </label>
+    </div>
+    <button type="submit" class="btn btn-default">Cargar mensaje</button>
+  </form>
+</div>
+</body>
+</html>

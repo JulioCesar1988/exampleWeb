@@ -1,93 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-* {box-sizing: border-box;}
+<meta charset="UTF-8">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Twitter</a>
+    </div>
+    <ul class="nav navbar-nav">
+        {% if usuario_logeado %}
+      <li class="active"><a href="http://localhost/benitez/index.php?action=publicacion_index">Publicaciones</a></li>
+      <li><a href="http://localhost/benitez/index.php?action=add_publicacion">Agregar Publicacion</a></li>
+       {% endif %}
+    </ul>
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+    <ul class="nav navbar-nav navbar-right">
+    {% if usuario_logeado %}
+      <li><a href="http://localhost/benitez/index.php?action=cerrar_sesion"><span class="glyphicon glyphicon-user"></span> Salir</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{usuario_logeado}}</a></li>
+{% else %}
 
-.topnav {
-  overflow: hidden;
-  background-color: #e9e9e9;
-}
+      <li><a href="http://localhost/benitez/index.php?action=login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+{% endif %}
 
-.topnav a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #2196F3;
-  color: white;
-}
-
-.topnav .search-container {
-  float: right;
-}
-
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-}
-
-.topnav .search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.topnav .search-container button:hover {
-  background: #ccc;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav .search-container {
-    float: none;
-  }
-  .topnav a, .topnav input[type=text], .topnav .search-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;
-  }
-}
-</style>
-</head>
-<body>
-
-<div class="topnav">
-  <a href="#about">Iniciar sesion</a>
-  <a href="#about">Cerrar sesion</a>
-  <a href="#contact">Publicaciones</a>
-  <a href="template/Add_publicacion.html">Agregar publicacion</a>
-</div>
-
-
-</body>
-</html>
+    </ul>
+  </div>
+</nav>

@@ -1,40 +1,40 @@
 <?php
-require_once 'model/Publicacion';
-require_once 'model/Usuario';
+include_once ('model/Publicacion.php');
+include_once ('vista/List_publicaciones.php');
+class publicacionControlador {
+    private static $instance;
+    public static function getInstance() {
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+    private function __construct() {
 
-$publicacion = new Publicacion();
-$publicaciones = $publicacion->allPublicacion();
-// Agregamos un mensaje  ( publicacion )
-public add_mensaje () {
- // parametros que recibimos
-$mensaje = $_POST["mesaje"];
-$fecha_publicacion = $date = date('Y-m-d H:i:s');
-$publico = $_POST["publico"];
-// Necesitamos obtener el Id del Usuario que lo esta cargardo
-$usuario = new Usuario();
-$usuario_logeado = $_SESSION["email"];
-$idUsuario = usuario->getIdUsuario($usuario_logeado);
-// Llamos al modelo publicacion para hacer el insert
-$publicacion = new Publicacion();
-if ($publicacion->insert($mensaje,$fecha_publicacion,$publico,$idUsuario)) {
-     echo "El mensaje se pudo dar de alta exitosamente";
-}
-{echo "No se puede dar de alta es mensaje lo sentimos";}
+    }
+    // muestra formulario de login
+  	public function index_publicaciones(){
+      $publicacion = new Publicacion();
+      // publicaciones de mis de los usuarios que sigo .
+      $id_usuario = 1;
+      $publicaciones = $publicacion->allPublicaciones($id_usuario);
+      $v = new List_publicaciones();
+      $usuario_logeado = $_SESSION["mail"];
+      $v->show($usuario_logeado,$publicaciones);
 
-}
+  	}
 
-
-public index_publicacion(){
-  // Obtenemos todas las publicaciones publicas para el usuario que se logeo
- $publicacion = new Publicacion();
- $publicaciones = $publicacion->allPublicacion();
- // Tenemos que instanciar la vista  En twig para enviar los datos y que pueda hacer el render
- $view = new  Show_Publicaciones();
- // publicaciones a mostrar y tambien el usario logeado para hacer el render
- $view->show( $publicaciones);
+ // insertar un mensaje de un usauario
+public function insert_publicacion($mensaje, $fecha_publicacion, $publico, $usuario_id){
+  $publicacion = new Publicacion();
+  $publicaciones = $publicacion->insert_publicacion($mensaje, $fecha_publicacion, $publico, $usuario_id);
+   header("Location: http://localhost/benitez/index.php?action=publicacion_index");
 
 }
 
 
+
+
+}
 
 ?>
